@@ -134,7 +134,7 @@ colourQuiz.displayQuiz = function () {
 			choicesDisplay.push("<label>\n\t\t\t\t\t<input type=\"radio\" name=\"question" + i + "\" value=\"" + obj.choices[letter] + "\">\n\t\t\t\t\t" + obj.choices[letter] + "\n\t\t\t\t</label>");
 		}
 
-		output.push("<div class=\"slide\">\n\t\t\t\t<div class=\"question question" + i + "\">\n\t\t\t\t\t<img src=\"../../assets/" + obj.question + ".jpg\" alt=\"ishihara colour blindness test images\">\n\t\t\t\t\t<div class=\"questionTitle\">" + (i + 1) + ". What do you see?</div>\n\t\t\t\t\t<div class=\"ansDescription hide ans" + i + "\">\n\t\t\t\t\t\t<div>The correct answer is <span>" + obj.correctAnswer["answer"] + "</span>.</div>\n\t\t\t\t\t\t<div>" + obj.correctAnswer["description"] + "</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"choices\">" + choicesDisplay.join("") + "</div>\n\t\t\t</div>");
+		output.push("<div class=\"slide\">\n\t\t\t\t<div class=\"question question" + i + "\">\n\t\t\t\t\t<img src=\"assets/" + obj.question + ".jpg\" alt=\"ishihara colour blindness test images\">\n\t\t\t\t\t<div class=\"questionTitle\">" + (i + 1) + ". What do you see?</div>\n\t\t\t\t\t<div class=\"ansDescription hide ans" + i + "\">\n\t\t\t\t\t\t<div>The correct answer is <span>" + obj.correctAnswer["answer"] + "</span>.</div>\n\t\t\t\t\t\t<div>" + obj.correctAnswer["description"] + "</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"choices\">" + choicesDisplay.join("") + "</div>\n\t\t\t</div>");
 	};
 	$("#quiz").append(output);
 };

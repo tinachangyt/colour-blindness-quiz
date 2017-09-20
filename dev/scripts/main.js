@@ -154,7 +154,7 @@ colourQuiz.displayQuiz = function() {
 		output.push(
 			`<div class="slide">
 				<div class="question question${i}">
-					<img src="../../assets/${obj.question}.jpg" alt="ishihara colour blindness test images">
+					<img src="assets/${obj.question}.jpg" alt="ishihara colour blindness test images">
 					<div class="questionTitle">${i+1}. What do you see?</div>
 					<div class="ansDescription hide ans${i}">
 						<div>The correct answer is <span>${obj.correctAnswer["answer"]}</span>.</div>
