@@ -80,7 +80,7 @@ button#startBtn {
 	transform: translate(-50%);
 }
 
-#submit, #retake {
+#submit, #retake, #closeBtn {
 	font-size: 1.3rem;
 	margin: 0 5px;
 }
@@ -111,9 +111,6 @@ button#startBtn {
 .question {
 	.questionTitle {
 		margin: 30px 0 10px 0;
-		.fa-circle-o, .fa-times {
-			font-size: 2rem;
-		}
 	}
 	.ansDescription {
 		margin: 10px 0 30px 0;
@@ -125,10 +122,44 @@ button#startBtn {
 	}
 }
 
+.fa-circle-o, .fa-times {
+	font-size: 2rem;
+}
+
 #results {
 	font-size: 4rem;
 	font-weight: 600;
 	padding: 3% 5%;
+}
+
+.resultsSummary {
+	border: 1px solid black;
+	color: white;
+	background: rgba(0,0,0, 0.8);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9;
+	font-size: 2rem;
+	.container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		.resultsSummary__item {
+			margin-bottom: 10px;
+		}
+	}
+	#closeBtn {
+		background: transparent;
+		padding: 0;
+		font-size: 3.5rem;
+		position: absolute;
+		top: 25px;
+		right: 40px;
+	}
 }
 //FORM SECTION STYLE ENDS
 
@@ -224,6 +255,17 @@ button#startBtn {
 		}
 		.ansDescription {
 			display: none;
+		}
+	}
+	.resultsSummary {
+		font-size: 1.5rem;
+		.container .resultsSummary__item {
+			margin-bottom: 3px;
+		}
+		#closeBtn {
+			font-size: 2.5rem;
+			top: 8px;
+			right: 12px;
 		}
 	}
 }

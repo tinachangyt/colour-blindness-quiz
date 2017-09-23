@@ -199,7 +199,7 @@ button#startBtn {
   -webkit-transform: translate(-50%);
           transform: translate(-50%); }
 
-#submit, #retake {
+#submit, #retake, #closeBtn {
   font-size: 1.3rem;
   margin: 0 5px; }
 
@@ -222,8 +222,6 @@ button#startBtn {
 
 .question .questionTitle {
   margin: 30px 0 10px 0; }
-  .question .questionTitle .fa-circle-o, .question .questionTitle .fa-times {
-    font-size: 2rem; }
 
 .question .ansDescription {
   margin: 10px 0 30px 0;
@@ -232,10 +230,40 @@ button#startBtn {
     font-style: italic;
     font-weight: 600; }
 
+.fa-circle-o, .fa-times {
+  font-size: 2rem; }
+
 #results {
   font-size: 4rem;
   font-weight: 600;
   padding: 3% 5%; }
+
+.resultsSummary {
+  border: 1px solid black;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+  font-size: 2rem; }
+  .resultsSummary .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+    .resultsSummary .container .resultsSummary__item {
+      margin-bottom: 10px; }
+  .resultsSummary #closeBtn {
+    background: transparent;
+    padding: 0;
+    font-size: 3.5rem;
+    position: absolute;
+    top: 25px;
+    right: 40px; }
 
 .active-slide {
   opacity: 1;
@@ -298,4 +326,12 @@ button#startBtn {
     .question .questionTitle .fa-circle-o, .question .questionTitle .fa-times {
       font-size: 1.5rem; }
   .question .ansDescription {
-    display: none; } }
+    display: none; }
+  .resultsSummary {
+    font-size: 1.5rem; }
+    .resultsSummary .container .resultsSummary__item {
+      margin-bottom: 3px; }
+    .resultsSummary #closeBtn {
+      font-size: 2.5rem;
+      top: 8px;
+      right: 12px; } }

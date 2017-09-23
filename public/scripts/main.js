@@ -10,6 +10,7 @@ colourQuiz.init = function () {
 	colourQuiz.prevSlideFunc();
 	colourQuiz.retakeQuiz();
 	colourQuiz.revealQuiz();
+	colourQuiz.removeSummary();
 };
 
 var ishihara = [{
@@ -134,7 +135,7 @@ colourQuiz.displayQuiz = function () {
 			choicesDisplay.push("<label>\n\t\t\t\t\t<input type=\"radio\" name=\"question" + i + "\" value=\"" + obj.choices[letter] + "\">\n\t\t\t\t\t" + obj.choices[letter] + "\n\t\t\t\t</label>");
 		}
 
-		output.push("<div class=\"slide\">\n\t\t\t\t<div class=\"question question" + i + "\">\n\t\t\t\t\t<img src=\"assets/" + obj.question + ".jpg\" alt=\"ishihara colour blindness test images\">\n\t\t\t\t\t<div class=\"questionTitle\">" + (i + 1) + ". What do you see?</div>\n\t\t\t\t\t<div class=\"ansDescription hide ans" + i + "\">\n\t\t\t\t\t\t<div>The correct answer is <span>" + obj.correctAnswer["answer"] + "</span>.</div>\n\t\t\t\t\t\t<div>" + obj.correctAnswer["description"] + "</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"choices\">" + choicesDisplay.join("") + "</div>\n\t\t\t</div>");
+		output.push("<div class=\"slide\">\n\t\t\t\t<div class=\"question question" + i + "\">\n\t\t\t\t\t<img src=\"assets/" + obj.question + ".jpg\" alt=\"ishihara colour blindness test images\">\n\t\t\t\t\t<div class=\"questionTitle\">" + (i + 1) + ". What do you see?</div>\n\t\t\t\t\t<div class=\"ansDescription hide ansDescription" + i + "\">\n\t\t\t\t\t\t<div>The correct answer is <span>" + obj.correctAnswer["answer"] + "</span>.</div>\n\t\t\t\t\t\t<div>" + obj.correctAnswer["description"] + "</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"choices\">" + choicesDisplay.join("") + "</div>\n\t\t\t</div>");
 	};
 	$("#quiz").append(output);
 };
@@ -144,20 +145,26 @@ colourQuiz.getResults = function () {
 		e.preventDefault();
 
 		var userCorrect = 0;
+		var summaryList = [];
 		for (var i = 0; i < ishihara.length; i++) {
 			var obj = ishihara[i];
 			var userAns = $("input[name=question" + i + "]:checked").val();
 			if (userAns === obj.correctAnswer["answer"]) {
 				userCorrect++;
-				$("div.question" + i).addClass("correct");
+				$(".question" + i).addClass("correct");
 				$(".question" + i + " .questionTitle").append(' <i class="fa fa-circle-o" aria-hidden="true"></i>');
+
+				summaryList.push("<div class=\"resultsSummary__item\">" + (i + 1) + ". <i class=\"fa fa-circle-o\" aria-hidden=\"true\"></i></div>");
 			} else {
-				$("div.question" + i).addClass("wrong");
-				$(".ans" + i).addClass("show");
+				$(".question" + i).addClass("wrong");
+				$(".ansDescription" + i).addClass("show");
 				$(".question" + i + " .questionTitle").append(' <i class="fa fa-times" aria-hidden="true"></i>');
+
+				summaryList.push("<div class=\"resultsSummary__item\">" + (i + 1) + ". <i class=\"fa fa-times\" aria-hidden=\"true\"></i></div>");
 			}
 		}
 		$("#results").text(userCorrect + " / " + ishihara.length);
+		$(".resultsSummary").removeClass("hide").append("<span class=\"container\">" + summaryList.join("") + "</span>");
 	});
 };
 
@@ -220,8 +227,8 @@ colourQuiz.prevSlideFunc = function () {
 
 		currentSlide.fadeOut(200).removeClass("active-slide");
 
-		// After clicking on the prev button, the slider will stay on the first slide when at the first slide.
 		if (prevSlideIndex === $(".slide").first().index() - 1) {
+			// After clicking on the prev button, the slider will stay on the first slide when at the first slide.
 			$(".slide").eq(0).fadeIn(200).addClass("active-slide");
 		} else {
 			prevSlide.fadeIn(200).addClass("active-slide");
@@ -234,6 +241,13 @@ colourQuiz.prevSlideFunc = function () {
 colourQuiz.revealQuiz = function () {
 	$("#startBtn").on("click", function () {
 		$("header").addClass("startReveal");
+	});
+};
+
+colourQuiz.removeSummary = function () {
+	$(".resultsSummary").on("click", $("#closeBtn"), function (e) {
+		e.preventDefault();
+		$(".resultsSummary").addClass("hide");
 	});
 };
 
