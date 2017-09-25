@@ -147,10 +147,13 @@ header {
   -webkit-transition: all 1s;
   transition: all 1s;
   color: white; }
-  header #clip {
+  header h1 {
     margin: 80px 5% 0 5%;
     font-size: calc(70px + (220 - 70) * ((100vw - 320px) / (1920 - 320)));
     font-weight: 700; }
+  header h2 {
+    margin: 0 0 0 5%;
+    font-size: calc(30px + (70 - 30) * ((100vw - 320px) / (1920 - 320))); }
 
 button, input {
   outline: none; }
@@ -172,7 +175,7 @@ button#startBtn {
   margin: 0 auto;
   display: block;
   position: absolute;
-  bottom: 20%;
+  bottom: 18%;
   left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%); }
